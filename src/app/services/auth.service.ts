@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   storeUserData(token, user) {
-    this.lStorageService.setItem('id_token', token);
+    this.lStorageService.setItem('id_token', "Bearer "+token);
     this.lStorageService.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;

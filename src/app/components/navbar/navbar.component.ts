@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  isShown:boolean = false;
 
   constructor(public authService: AuthService, private router: Router) { }
 

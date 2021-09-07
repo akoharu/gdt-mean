@@ -4,6 +4,7 @@
 // Server specific version of Zone.js for SSR
 require('zone.js/dist/zone-node');
 require("dotenv").config();
+const response = require('./config/response')
 
 // Dependencies
 const express = require('express');
@@ -73,11 +74,7 @@ app.get('*', angular.serverRouter);
 // Error handler for 404 - Page Not Found
 app.use(function (req, res, next) {
     let err = new Error('Not Found');
-    res.status(404).json({
-        status: 404,
-        message: err.message,
-        name: err.name
-    });
+    return response.singleData(res, 404, "", err.message);
 });
 
 // Error handler for all other errors
@@ -85,11 +82,7 @@ app.use(function (err, req, res, next) {
     console.log(err);
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
-    res.status(err.status || 500).json({
-        status: 500,
-        message: err.message,
-        name: err.name
-    });
+    return response.singleData(res, err.status || 500, "", err.message);
 });
 
 // ******************************************

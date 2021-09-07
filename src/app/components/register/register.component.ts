@@ -31,18 +31,16 @@ export class RegisterComponent implements OnInit {
 
     // Register User
     this.authService.registerUser(form.value).subscribe((data: any) => {
-      if (data.success) {
         this.succSwitch = true;
         this.succMsg = 'You are now registered and can log in';
         this.errSwitch = false;
         this.errMsg = '';
-        this.submitSwitch = true;
-      } else {
-        this.succSwitch = false;
-        this.succMsg = '';
-        this.errSwitch = true;
-        this.errMsg = 'Something went wrong';
-      }
+        this.submitSwitch = true;      
+    }, err => {
+      this.succSwitch = false;
+      this.succMsg = '';
+      this.errSwitch = true;
+      this.errMsg = err.error.message;
     });
 
   }

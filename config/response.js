@@ -1,4 +1,4 @@
-async function singleData (statusCode, values, message, reply) {
+async function singleData (reply, statusCode, values, message) {
     reply.status(statusCode).send({
         statusCode : statusCode,
         data : values,
