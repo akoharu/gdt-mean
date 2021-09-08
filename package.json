@@ -10,7 +10,8 @@
     "build": "ng build --prod && ng build --prod --app universal --output-hashing=none",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "startServer": "node server.js"
   },
   "private": true,
   "dependencies": {
