@@ -29,7 +29,7 @@ mongoose.connect(config.database)
 
 // Routes
 const angular = require('./routes/angular');
-const users = require('./routes/users');
+const api = require('./routes/api');
 
 // ******************************************
 // MIDDLEWARE
@@ -53,7 +53,7 @@ app.use(passport.session());
 app.get('/', angular.serverRouter);
 
 // API calls go here
-app.use('/users', users);
+app.use('/api', api);
 
 // Serve static files
 app.use(express.static(`${__dirname}/dist`));

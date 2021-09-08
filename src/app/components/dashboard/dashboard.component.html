@@ -1,4 +1,32 @@
 <div class="fadein">
-  <h2 class="page-header">Dashboard</h2>
-  <p>Welcome to your dashboard</p>
+  <h2 class="page-header">Hi {{user?.name}} !</h2>
+  <p>Last login at {{date}}</p>
+  <div class="card">
+    <div class="card-body">
+      Saldo anda : <b> {{ balance| currency:'Rp':'symbol':'3.0'}} </b>
+    </div>
+  </div>
+  <div class="table-responsive mt-3">
+    <table class="table">
+      <thead>
+        <th>Tgl</th>
+        <th>Keterangan</th>
+        <th>Type</th>
+        <th style="background-color: rgb(185, 198, 255);">Jumlah</th>
+        <th style="background-color: rgb(185, 255, 185);">Saldo</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of history | paginate:{itemsPerPage: 5, currentPage:page, totalItems:total}">
+          <td>{{item?.createdAt | date: 'medium'}}</td>
+          <td>{{item?.description}}</td>
+          <td>{{item.type}}</td>
+          <td style="background-color: rgb(185, 198, 255);">{{ item?.amount| currency:'Rp':'symbol':'3.0'}}</td>
+          <td style="background-color: rgb(185, 255, 185);">{{ item?.balance| currency:'Rp':'symbol':'3.0'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="pagination right">
+			<pagination-controls (pageChange)="paginate($event)"></pagination-controls>
+		</div>    		
+  </div>    
 </div>

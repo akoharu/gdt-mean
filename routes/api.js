@@ -22,8 +22,7 @@ router.post('/register', async (req, res, next) => {
   if (!(email && password && name && phone)) {
     return response.singleData(res, 400, "", "All input is required")
   }
-  phone = Number(phone);
-  if (!(String(phone).match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im))) {
+  if (!(phone.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im))) {
     return response.singleData(res, 400, "", "Phone is not valid!")
   }
   // check if user already exist
@@ -88,5 +87,5 @@ router.get('/profile', authenticated, (req, res, next) => {
     user: req.user
   }, `Success`);
 });
-
+router.use('/transaction', require('./transaction'))
 module.exports = router;

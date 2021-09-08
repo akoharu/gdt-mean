@@ -15,13 +15,13 @@ export class AuthService {
     user.email = user.email.toLowerCase();
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    return this.http.post(this.apiUrl+'/users/register', user, { headers });
+    return this.http.post(this.apiUrl+'/api/register', user, { headers });
   }
 
   authenticateUser(user) {
     let headers = new HttpHeaders()
     headers = headers.append('Content-Type', 'application/json');
-    return this.http.post(this.apiUrl+'/users/authenticate', user, { headers });
+    return this.http.post(this.apiUrl+'/api/authenticate', user, { headers });
   }
 
   getProfile() {
@@ -29,7 +29,7 @@ export class AuthService {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('Authorization', this.authToken);
-    return this.http.get(this.apiUrl+'/users/profile', { headers });
+    return this.http.get(this.apiUrl+'/api/profile', { headers });
   }
 
   storeUserData(token, user) {

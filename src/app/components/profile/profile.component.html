@@ -1,7 +1,7 @@
-<div class="fadein">
+<div class="fadein mt-5">
   <div *ngIf="user">
-    <h2 class="page-header">{{ user?.name }}</h2>
     <ul class="list-group">
+      <li class="list-group-item">Name: {{ user?.name }}</li>
       <li class="list-group-item">Phone: {{ user?.phone }}</li>
       <li class="list-group-item">Email: {{ user?.email }}</li>
     </ul>

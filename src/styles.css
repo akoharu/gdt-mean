@@ -60,3 +60,6 @@
 .nav-link.active {
     border: solid 1px #ababab;
 }
+.right {
+    text-align: right;
+}

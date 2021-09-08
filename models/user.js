@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     unique: true
   },
   phone: {
-    type: Number,
+    type: String,
     required: true,
     unique: true
   },
@@ -20,7 +20,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   }
-});
+}, { timestamps: true });
 
 // Define and Export Model
 module.exports = mongoose.model('User', UserSchema);

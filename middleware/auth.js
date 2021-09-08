@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
         try {
             const user = await User.findOne(
                 {_id: token._id}
-            );
+            ).lean();
             req.user = user;
         } catch (error) {
             next(error);

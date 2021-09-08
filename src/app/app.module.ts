@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 import { LocalstorageService } from './services/localstorage.service';
+import { TransactionService } from './services/transaction.service';
 import { ValidateService } from './services/validate.service';
 
 @NgModule({
@@ -32,13 +34,13 @@ import { ValidateService } from './services/validate.service';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule, NgxPaginationModule
   ],
   providers: [
     ValidateService,
     AuthService,
     AuthGuard,
-    LocalstorageService
+    LocalstorageService, TransactionService
   ],
   bootstrap: [AppComponent]
 })
